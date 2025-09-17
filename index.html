@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Learning Platform - STEM Education</title>
+    <meta name="description" content="Gamified STEM learning platform for rural students">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🎓 ग्रामीण शिक्षा | Rural Learning</h1>
+                <p>Smart Education for Rural Schools</p>
+            </div>
+            <div class="user-info">
+                <div class="points">Points: <span id="userPoints">0</span></div>
+                <div class="level">Level: <span id="userLevel">1</span></div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+          <nav class="nav-menu">
+            <button class="nav-btn active" data-page="dashboard" >🏠 Dashboard</button>
+            <button class="nav-btn" data-page="quiz" onclick="window.location.href='quiz.html'">🎯 Play Quiz</button></a>
+            <button class="nav-btn" data-page="progress" onclick="window.location.href='progress.html'">📊 Progress</button>
+            <button class="nav-btn" data-page="teacher" onclick="window.location.href='teacher.html'">👨‍🏫 Teacher</button>
+        </nav>
+        
+
+        <!-- Dashboard Content -->
+        <main class="main-content" id="dashboard">
+            <section class="welcome-section">
+                <h2>Welcome, Student!</h2>
+                <p>Ready to explore the exciting world of STEM? Let's start learning!</p>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <h3>🏆 Total Points</h3>
+                        <span class="stat-number" id="totalPoints">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📚 Lessons Completed</h3>
+                        <span class="stat-number" id="lessonsCompleted">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>🎯 Accuracy</h3>
+                        <span class="stat-number" id="accuracy">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subject Selection -->
+            <section class="subjects-section">
+                <h2>Choose Your Subject</h2>
+                <div class="subjects-grid">
+                    <div class="subject-card" data-subject="math">
+                        <div class="subject-icon">➕</div>
+                        <h3>Mathematics</h3>
+                        <p>गणित | Algebra, Geometry, Numbers</p>
+                        <div class="subject-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="physics">
+                        <div class="subject-icon">⚡</div>
+                        <h3>Physics</h3>
+                        <p>भौतिकी | Forces, Energy, Motion</p>
+                        <div class="subject-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="chemistry">
+                        <div class="subject-icon">🧪</div>
+                        <h3>Chemistry</h3>
+                        <p>रसायन | Elements, Reactions, Matter</p>
+                        <div class="subject-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-card" data-subject="biology">
+                        <div class="subject-icon">🌱</div>
+                        <h3>Biology</h3>
+                        <p>जीवविज्ञान | Plants, Animals, Human Body</p>
+                        <div class="subject-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span>0% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements-section">
+                <h2>Your Achievements</h2>
+                <div class="badges-container" id="badgesContainer">
+                    <div class="badge locked">
+                        <div class="badge-icon">🏅</div>
+                        <span>First Quiz</span>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">🌟</div>
+                        <span>Perfect Score</span>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">🔥</div>
+                        <span>7 Day Streak</span>
+                    </div>
+                    <div class="badge locked">
+                        <div class="badge-icon">💎</div>
+                        <span>STEM Master</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Government of Odisha - Electronics & IT Department</p>
+            <div class="offline-indicator" id="offlineIndicator">
+                <span class="status-dot online"></span>
+                <span>Online</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="dashboard.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

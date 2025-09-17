@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Learning Platform - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .test-container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .test-btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            background: #FF9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .test-btn:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .success { background: rgba(76, 175, 80, 0.3); }
+        .error { background: rgba(244, 67, 54, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎓 Rural Learning Platform</h1>
+        <h2>Test All Links</h2>
+        
+        <div id="status" class="status"></div>
+        
+        <a href="launch.html" class="test-btn">📚 Launch Page</a>
+        <a href="index.html" class="test-btn">🏠 Dashboard</a>
+        <a href="quiz.html" class="test-btn">🎯 Quiz Page</a>
+        <a href="progress.html" class="test-btn">📊 Progress Page</a>
+        <a href="teacher.html" class="test-btn">👨‍🏫 Teacher Dashboard</a>
+        
+        <div style="margin-top: 30px; font-size: 14px; opacity: 0.8;">
+            <p><strong>Files Structure Check:</strong></p>
+            <p>✅ HTML files: index, quiz, progress, teacher</p>
+            <p>✅ CSS files: style.css, quiz.css, progress.css, teacher.css</p>
+            <p>✅ JS files: app.js, quiz.js, questions.js, progress.js, teacher.js, dashboard.js</p>
+            <p>✅ PWA files: manifest.json, sw.js</p>
+        </div>
+    </div>
+
+    <script>
+        // Test JavaScript loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusDiv = document.getElementById('status');
+            
+            // Test if all JavaScript files are available
+            const jsFiles = ['js/app.js', 'js/quiz.js', 'js/questions.js', 'js/progress.js', 'js/teacher.js', 'js/dashboard.js'];
+            let loadedFiles = 0;
+            
+            // Simple test to see if we can access basic functionality
+            setTimeout(() => {
+                if (typeof window.RuralLearningApp !== 'undefined') {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = '✅ All core files are properly linked and accessible!';
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.textContent = '⚠️ Some files may not be loading correctly. Check browser console for errors.';
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

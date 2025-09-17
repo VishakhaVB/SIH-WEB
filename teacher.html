@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - Rural Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="teacher-header">
+            <div class="nav-section">
+                <button class="back-btn" onclick="goHome()">← Back</button>
+                <h1>Teacher Analytics Dashboard</h1>
+                <div class="dashboard-info">
+                    <span>👨‍🏫 Educator Portal | शिक्षक डैशबोर्ड</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Teacher Dashboard -->
+        <main class="teacher-content">
+            <!-- Overview Stats -->
+            <section class="overview-section">
+                <h2>Class Overview | कक्षा सिंहावलोकन</h2>
+                <div class="overview-grid">
+                    <div class="overview-card students">
+                        <div class="card-icon">👥</div>
+                        <div class="card-info">
+                            <h3>Active Students</h3>
+                            <span class="card-number" id="activeStudents">1</span>
+                            <small>This week</small>
+                        </div>
+                    </div>
+
+                    <div class="overview-card engagement">
+                        <div class="card-icon">📈</div>
+                        <div class="card-info">
+                            <h3>Engagement Rate</h3>
+                            <span class="card-number" id="engagementRate">0%</span>
+                            <small>Weekly average</small>
+                        </div>
+                    </div>
+
+                    <div class="overview-card completion">
+                        <div class="card-icon">✅</div>
+                        <div class="card-info">
+                            <h3>Quiz Completion</h3>
+                            <span class="card-number" id="quizCompletion">0</span>
+                            <small>Total completed</small>
+                        </div>
+                    </div>
+
+                    <div class="overview-card performance">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-info">
+                            <h3>Avg. Accuracy</h3>
+                            <span class="card-number" id="avgAccuracy">0%</span>
+                            <small>Class average</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subject Performance -->
+            <section class="subject-analytics">
+                <h2>Subject Performance Analysis</h2>
+                <div class="subjects-analytics-grid">
+                    <div class="subject-analytics-card" data-subject="math">
+                        <div class="subject-header">
+                            <div class="subject-icon">➕</div>
+                            <h3>Mathematics</h3>
+                            <div class="subject-status good">Strong</div>
+                        </div>
+                        <div class="subject-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Completion Rate</span>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="metric-value" id="mathCompletionRate">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Avg. Score</span>
+                                <span class="metric-value" id="mathAvgScore">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Time Spent</span>
+                                <span class="metric-value" id="mathTimeSpent">0 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-analytics-card" data-subject="physics">
+                        <div class="subject-header">
+                            <div class="subject-icon">⚡</div>
+                            <h3>Physics</h3>
+                            <div class="subject-status needs-attention">Needs Focus</div>
+                        </div>
+                        <div class="subject-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Completion Rate</span>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="metric-value" id="physicsCompletionRate">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Avg. Score</span>
+                                <span class="metric-value" id="physicsAvgScore">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Time Spent</span>
+                                <span class="metric-value" id="physicsTimeSpent">0 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-analytics-card" data-subject="chemistry">
+                        <div class="subject-header">
+                            <div class="subject-icon">🧪</div>
+                            <h3>Chemistry</h3>
+                            <div class="subject-status average">Average</div>
+                        </div>
+                        <div class="subject-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Completion Rate</span>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="metric-value" id="chemistryCompletionRate">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Avg. Score</span>
+                                <span class="metric-value" id="chemistryAvgScore">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Time Spent</span>
+                                <span class="metric-value" id="chemistryTimeSpent">0 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-analytics-card" data-subject="biology">
+                        <div class="subject-header">
+                            <div class="subject-icon">🌱</div>
+                            <h3>Biology</h3>
+                            <div class="subject-status good">Strong</div>
+                        </div>
+                        <div class="subject-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Completion Rate</span>
+                                <div class="metric-bar">
+                                    <div class="metric-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="metric-value" id="biologyCompletionRate">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Avg. Score</span>
+                                <span class="metric-value" id="biologyAvgScore">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Time Spent</span>
+                                <span class="metric-value" id="biologyTimeSpent">0 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Progress Tracking -->
+            <section class="student-tracking">
+                <h2>Individual Student Progress</h2>
+                <div class="students-table-container">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Level</th>
+                                <th>Total Points</th>
+                                <th>Quizzes Completed</th>
+                                <th>Avg. Accuracy</th>
+                                <th>Last Active</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <tr>
+                                <td>
+                                    <div class="student-info">
+                                        <div class="student-avatar">👤</div>
+                                        <span>Demo Student</span>
+                                    </div>
+                                </td>
+                                <td><span class="level-badge">Level 1</span></td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0%</td>
+                                <td>Just started</td>
+                                <td><span class="status-badge new">New</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Learning Insights -->
+            <section class="learning-insights">
+                <h2>Learning Insights & Recommendations</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <div class="insight-icon">💡</div>
+                        <div class="insight-content">
+                            <h3>Get Started</h3>
+                            <p>Encourage students to take their first quiz to begin tracking detailed analytics and engagement metrics.</p>
+                            <div class="insight-action">
+                                <button class="insight-btn" onclick="goToQuiz()">Start First Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-icon">📊</div>
+                        <div class="insight-content">
+                            <h3>Track Progress</h3>
+                            <p>Monitor student engagement and completion rates. Data will appear here as students begin using the platform.</p>
+                            <div class="insight-stats">
+                                <span>• Weekly engagement tracking</span>
+                                <span>• Subject-wise performance</span>
+                                <span>• Individual progress reports</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card">
+                        <div class="insight-icon">🎯</div>
+                        <div class="insight-content">
+                            <h3>Improve Outcomes</h3>
+                            <p>Use analytics to identify areas where students need additional support and celebrate achievements.</p>
+                            <div class="insight-features">
+                                <span>• Identify struggling topics</span>
+                                <span>• Celebrate top performers</span>
+                                <span>• Customize learning paths</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weekly Report -->
+            <section class="weekly-report">
+                <h2>Weekly Learning Report</h2>
+                <div class="report-container">
+                    <div class="report-summary">
+                        <h3>This Week's Highlights</h3>
+                        <div class="report-stats">
+                            <div class="report-stat">
+                                <span class="stat-icon">👥</span>
+                                <div class="stat-content">
+                                    <strong>1 Student</strong>
+                                    <small>Started learning journey</small>
+                                </div>
+                            </div>
+                            <div class="report-stat">
+                                <span class="stat-icon">🚀</span>
+                                <div class="stat-content">
+                                    <strong>Platform Ready</strong>
+                                    <small>All subjects available</small>
+                                </div>
+                            </div>
+                            <div class="report-stat">
+                                <span class="stat-icon">🎯</span>
+                                <div class="stat-content">
+                                    <strong>15% Target</strong>
+                                    <small>Engagement goal achievable</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-actions">
+                        <h3>Recommended Actions</h3>
+                        <ul class="action-list">
+                            <li>✅ Platform successfully set up for rural education</li>
+                            <li>🎯 Encourage first student to complete initial quiz</li>
+                            <li>📱 Test offline functionality on low-cost devices</li>
+                            <li>🌐 Verify multilingual content is accessible</li>
+                            <li>📊 Begin tracking engagement metrics for 15% improvement target</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="teacher.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

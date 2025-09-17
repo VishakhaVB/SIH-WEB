@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress - Rural Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="progress.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="progress-header">
+            <div class="nav-section">
+                <button class="back-btn" onclick="goHome()">← Back</button>
+                <h1>Your Learning Progress</h1>
+                <div class="user-level">Level <span id="studentLevel">1</span></div>
+            </div>
+        </header>
+
+        <!-- Main Progress Dashboard -->
+        <main class="progress-content">
+            <!-- Overall Stats -->
+            <section class="overall-stats">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <h3>Total Points</h3>
+                            <span class="stat-number" id="totalPointsProgress">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card success">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3>Quizzes Completed</h3>
+                            <span class="stat-number" id="quizzesCompleted">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card info">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3>Average Accuracy</h3>
+                            <span class="stat-number" id="averageAccuracy">0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card warning">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-info">
+                            <h3>Current Streak</h3>
+                            <span class="stat-number" id="currentStreak">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subject Progress -->
+            <section class="subject-progress-section">
+                <h2>Subject Performance | विषयवार प्रदर्शन</h2>
+                <div class="subjects-progress">
+                    <div class="subject-progress-card" data-subject="math">
+                        <div class="subject-header">
+                            <div class="subject-icon">➕</div>
+                            <div class="subject-info">
+                                <h3>Mathematics</h3>
+                                <span class="subject-level">Level <span id="mathLevel">1</span></span>
+                            </div>
+                            <div class="subject-score" id="mathScore">0 pts</div>
+                        </div>
+                        <div class="progress-details">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="mathProgress" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>Completed: <strong id="mathCompleted">0/50</strong></span>
+                                <span>Accuracy: <strong id="mathAccuracy">0%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-progress-card" data-subject="physics">
+                        <div class="subject-header">
+                            <div class="subject-icon">⚡</div>
+                            <div class="subject-info">
+                                <h3>Physics</h3>
+                                <span class="subject-level">Level <span id="physicsLevel">1</span></span>
+                            </div>
+                            <div class="subject-score" id="physicsScore">0 pts</div>
+                        </div>
+                        <div class="progress-details">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="physicsProgress" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>Completed: <strong id="physicsCompleted">0/50</strong></span>
+                                <span>Accuracy: <strong id="physicsAccuracy">0%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-progress-card" data-subject="chemistry">
+                        <div class="subject-header">
+                            <div class="subject-icon">🧪</div>
+                            <div class="subject-info">
+                                <h3>Chemistry</h3>
+                                <span class="subject-level">Level <span id="chemistryLevel">1</span></span>
+                            </div>
+                            <div class="subject-score" id="chemistryScore">0 pts</div>
+                        </div>
+                        <div class="progress-details">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="chemistryProgress" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>Completed: <strong id="chemistryCompleted">0/50</strong></span>
+                                <span>Accuracy: <strong id="chemistryAccuracy">0%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-progress-card" data-subject="biology">
+                        <div class="subject-header">
+                            <div class="subject-icon">🌱</div>
+                            <div class="subject-info">
+                                <h3>Biology</h3>
+                                <span class="subject-level">Level <span id="biologyLevel">1</span></span>
+                            </div>
+                            <div class="subject-score" id="biologyScore">0 pts</div>
+                        </div>
+                        <div class="progress-details">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="biologyProgress" style="width: 0%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>Completed: <strong id="biologyCompleted">0/50</strong></span>
+                                <span>Accuracy: <strong id="biologyAccuracy">0%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="achievements-progress">
+                <h2>Achievements & Badges | उपलब्धियां</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <div class="achievement-card locked" data-achievement="first-quiz">
+                        <div class="achievement-icon">🏅</div>
+                        <div class="achievement-info">
+                            <h3>First Quiz Master</h3>
+                            <p>Complete your first quiz</p>
+                            <div class="achievement-progress">0/1</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked" data-achievement="perfect-score">
+                        <div class="achievement-icon">🌟</div>
+                        <div class="achievement-info">
+                            <h3>Perfect Scholar</h3>
+                            <p>Score 100% in any quiz</p>
+                            <div class="achievement-progress">0/1</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked" data-achievement="streak-7">
+                        <div class="achievement-icon">🔥</div>
+                        <div class="achievement-info">
+                            <h3>Week Warrior</h3>
+                            <p>Maintain 7-day learning streak</p>
+                            <div class="achievement-progress">0/7</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked" data-achievement="math-master">
+                        <div class="achievement-icon">➕</div>
+                        <div class="achievement-info">
+                            <h3>Math Master</h3>
+                            <p>Complete 25 Math quizzes</p>
+                            <div class="achievement-progress">0/25</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked" data-achievement="science-explorer">
+                        <div class="achievement-icon">🔬</div>
+                        <div class="achievement-info">
+                            <h3>Science Explorer</h3>
+                            <p>Try all science subjects</p>
+                            <div class="achievement-progress">0/3</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card locked" data-achievement="stem-master">
+                        <div class="achievement-icon">💎</div>
+                        <div class="achievement-info">
+                            <h3>STEM Master</h3>
+                            <p>Reach level 5 in any subject</p>
+                            <div class="achievement-progress">Level 1/5</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Calendar -->
+            <section class="learning-calendar">
+                <h2>Learning Calendar | शिक्षा कैलेंडर</h2>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="calendar-nav" id="prevMonth">‹</button>
+                        <h3 id="currentMonth">January 2024</h3>
+                        <button class="calendar-nav" id="nextMonth">›</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Calendar days will be dynamically generated -->
+                    </div>
+                    <div class="calendar-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot active"></span>
+                            <span>Quiz Completed</span>
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot streak"></span>
+                            <span>Streak Day</span>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity | हाल की गतिविधि</h2>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-item">
+                        <div class="activity-icon">📝</div>
+                        <div class="activity-content">
+                            <p><strong>Welcome to Rural Learning!</strong></p>
+                            <p>Start your first quiz to begin tracking your progress.</p>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+    <script src="questions.js"></script>
+     
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

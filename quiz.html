@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM Quiz - Rural Learning Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Quiz Header -->
+        <header class="quiz-header">
+            <div class="quiz-nav">
+                <button class="back-btn" onclick="goHome()">← Back</button>
+                <h1 class="quiz-title">STEM Quiz Challenge</h1>
+                <div class="quiz-score">Score: <span id="currentScore">0</span></div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="quiz-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgress" style="width: 0%"></div>
+                </div>
+                <span class="progress-text">
+                    <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                </span>
+            </div>
+        </header>
+
+        <!-- Quiz Setup -->
+        <section class="quiz-setup" id="quizSetup">
+            <h2>Choose Your Challenge</h2>
+            
+            <div class="setup-options">
+                <div class="option-group">
+                    <h3>Subject | विषय</h3>
+                    <div class="subject-options">
+                        <button class="option-btn" data-subject="math">➕ Mathematics</button>
+                        <button class="option-btn" data-subject="physics">⚡ Physics</button>
+                        <button class="option-btn" data-subject="chemistry">🧪 Chemistry</button>
+                        <button class="option-btn" data-subject="biology">🌱 Biology</button>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <h3>Grade Level | कक्षा</h3>
+                    <div class="grade-options">
+                        <button class="option-btn" data-grade="6-8">Grades 6-8</button>
+                        <button class="option-btn" data-grade="9-10">Grades 9-10</button>
+                        <button class="option-btn" data-grade="11-12">Grades 11-12</button>
+                    </div>
+                </div>
+                
+                <div class="option-group">
+                    <h3>Difficulty | कठिनाई</h3>
+                    <div class="difficulty-options">
+                        <button class="option-btn" data-difficulty="easy">🟢 Easy</button>
+                        <button class="option-btn" data-difficulty="medium">🟡 Medium</button>
+                        <button class="option-btn" data-difficulty="hard">🔴 Hard</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="start-quiz-btn" id="startQuizBtn" disabled>Start Quiz Challenge! 🚀</button>
+        </section>
+
+        <!-- Quiz Game -->
+        <section class="quiz-game hidden" id="quizGame">
+            <div class="question-container">
+                <div class="question-header">
+                    <div class="question-type" id="questionType">Mathematics</div>
+                    <div class="timer" id="timer">30s</div>
+                </div>
+                
+                <div class="question-content">
+                    <h2 class="question-text" id="questionText">Loading question...</h2>
+                    <div class="question-image" id="questionImage" style="display: none;">
+                        <img src="" alt="Question visual" id="questionImg">
+                    </div>
+                </div>
+                
+                <div class="answers-container" id="answersContainer">
+                    <!-- Options will be dynamically populated -->
+                </div>
+                
+                <div class="quiz-controls">
+                    <button class="hint-btn" id="hintBtn">💡 Hint</button>
+                    <button class="next-btn hidden" id="nextBtn">Next Question →</button>
+                </div>
+                
+                <div class="hint-container hidden" id="hintContainer">
+                    <p id="hintText"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Results -->
+        <section class="quiz-results hidden" id="quizResults">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2>Quiz Complete! 🎉</h2>
+                    <div class="final-score">
+                        <span class="score-value" id="finalScore">0</span>
+                        <span class="score-label">Points Earned</span>
+                    </div>
+                </div>
+                
+                <div class="results-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="wrongAnswers">0</div>
+                        <div class="stat-label">Wrong</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="accuracyPercent">0%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="timeTaken">0s</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+                
+                <div class="achievement-earned" id="achievementEarned" style="display: none;">
+                    <div class="achievement-badge">
+                        <span class="badge-icon" id="earnedBadgeIcon">🏅</span>
+                        <span class="badge-name" id="earnedBadgeName">New Achievement!</span>
+                    </div>
+                </div>
+                
+                <div class="results-actions">
+                    <button class="play-again-btn" onclick="restartQuiz()">🎮 Play Again</button>
+                    <button class="home-btn" onclick="goHome()">🏠 Go Home</button>
+                    <button class="review-btn" onclick="reviewAnswers()">📝 Review Answers</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Answer Review -->
+        <section class="answer-review hidden" id="answerReview">
+            <div class="review-header">
+                <h2>Review Your Answers</h2>
+                <button class="close-review-btn" onclick="closeReview()">✕</button>
+            </div>
+            <div class="review-content" id="reviewContent">
+                <!-- Review items will be dynamically populated -->
+            </div>
+        </section>
+    </div>
+
+    
+    <!-- Scripts -->
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+    <script src="quiz.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registered successfully:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
