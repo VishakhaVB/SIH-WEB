@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Rural Learning Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    .login-container h2 {
+      margin-bottom: 20px;
+      color: #2E7D32;
+    }
+    .role-select {
+      margin-bottom: 15px;
+    }
+    .role-select select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .input-field {
+      margin-bottom: 15px;
+    }
+    .input-field input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #388E3C;
+    }
+    .back-home {
+      margin-top: 15px;
+      display: block;
+      color: #2E7D32;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login</h2>
+
+    <!-- Role Selection -->
+    <div class="role-select">
+      <label for="role">Select Role:</label>
+      <select id="role">
+        <option value="student">👩‍🎓 Student</option>
+        <option value="teacher">👨‍🏫 Teacher</option>
+        <option value="parent">👨‍👩‍👧 Parent</option>
+      </select>
+    </div>
+
+    <!-- Login Inputs -->
+    <div class="input-field">
+      <input type="text" id="username" placeholder="Enter Username">
+    </div>
+    <div class="input-field">
+      <input type="password" id="password" placeholder="Enter Password">
+    </div>
+
+    <!-- Login Button -->
+    <button onclick="login()">Login</button>
+
+    <!-- Back to Home -->
+    <a href="index.html" class="back-home">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    function login() {
+      const role = document.getElementById("role").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if(username && password) {
+        if(role === "student") {
+          window.location.href = "dashboard.html"; // student dashboard
+        } else if(role === "teacher") {
+          window.location.href = "teacher.html";   // teacher portal
+        } else {
+          window.location.href = "parent.html";    // parent page
+        }
+      } else {
+        alert("Please enter username & password");
+      }
+    }
+  </script>
+
+</body>
+</html>
